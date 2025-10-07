@@ -1,0 +1,343 @@
+:root {
+    --primary: #2c3e50;
+    --primary-dark: #1a252f;
+    --secondary: #e74c3c;
+    --accent: #3498db;
+    --success: #27ae60;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --light: #ecf0f1;
+    --dark: #2c3e50;
+    --gray: #95a5a6;
+    --gray-light: #bdc3c7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--dark);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+header h1 i {
+    color: var(--secondary);
+    margin-right: 15px;
+}
+
+header p {
+    color: var(--gray);
+    font-size: 1.2rem;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+}
+
+@media (max-width: 992px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-section, .bookings-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--light);
+}
+
+.section-title i {
+    color: var(--secondary);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid var(--gray-light);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: white;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    transform: translateY(-2px);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.filters input, .filters select {
+    flex: 1;
+}
+
+.bookings-container {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.booking-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+}
+
+.booking-card:hover {
+    transform: translateY(-5px);
+}
+
+.booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.booking-customer h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--primary);
+}
+
+.booking-customer p {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.booking-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-pending {
+    background: rgba(243, 156, 18, 0.1);
+    color: var(--warning);
+}
+
+.status-in-progress {
+    background: rgba(52, 152, 219, 0.1);
+    color: var(--accent);
+}
+
+.status-completed {
+    background: rgba(39, 174, 96, 0.1);
+    color: var(--success);
+}
+
+.booking-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-label {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.booking-notes {
+    background: var(--light);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--dark);
+}
+
+.no-bookings {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray);
+}
+
+.no-bookings i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: var(--gray-light);
+}
+
+.no-bookings p {
+    font-size: 1.1rem;
+}
+
+.alert {
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: none;
+    animation: slideIn 0.3s ease-out;
+}
+
+.alert-success {
+    background: rgba(39, 174, 96, 0.1);
+    border: 2px solid var(--success);
+    color: var(--success);
+}
+
+.alert-error {
+    background: rgba(231, 76, 60, 0.1);
+    border: 2px solid var(--danger);
+    color: var(--danger);
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.loading i {
+    font-size: 2.5rem;
+    color: var(--accent);
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px 0;
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Scrollbar Styling */
+.bookings-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.bookings-container::-webkit-scrollbar-track {
+    background: var(--light);
+    border-radius: 10px;
+}
+
+.bookings-container::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.bookings-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}

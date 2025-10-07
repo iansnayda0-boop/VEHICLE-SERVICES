@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Service Booking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-car"></i> AutoCare Service Center</h1>
+            <p>Book your vehicle service with our expert mechanics</p>
+        </header>
+
+        <div class="alert alert-success" id="successAlert">
+            <i class="fas fa-check-circle"></i> Booking submitted successfully!
+        </div>
+
+        <div class="alert alert-error" id="errorAlert">
+            <i class="fas fa-exclamation-circle"></i> <span id="errorMessage"></span>
+        </div>
+
+        <div class="main-content">
+            <section class="form-section">
+                <h2 class="section-title"><i class="fas fa-calendar-plus"></i> Book Service</h2>
+                
+                <form id="bookingForm" action="submit_booking.php" method="POST">
+                    <div class="form-group">
+                        <label for="customerName">Customer Name *</label>
+                        <input type="text" id="customerName" name="customerName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="vehicleReg">Vehicle Registration No. *</label>
+                        <input type="text" id="vehicleReg" name="vehicleReg" placeholder="e.g., ABC-1234" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serviceType">Type of Service *</label>
+                        <select id="serviceType" name="serviceType" required>
+                            <option value="">Select Service Type</option>
+                            <option value="Oil Change">Oil Change</option>
+                            <option value="Brake Service">Brake Service</option>
+                            <option value="Tire Rotation">Tire Rotation</option>
+                            <option value="Engine Tune-up">Engine Tune-up</option>
+                            <option value="Transmission Service">Transmission Service</option>
+                            <option value="AC Service">AC Service</option>
+                            <option value="Full Service">Full Service</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serviceDate">Preferred Date *</label>
+                        <input type="date" id="serviceDate" name="serviceDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Number *</label>
+                        <input type="tel" id="contactNumber" name="contactNumber" placeholder="e.g., +1 234 567 8900" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mechanicAssigned">Mechanic Assigned *</label>
+                        <select id="mechanicAssigned" name="mechanicAssigned" required>
+                            <option value="">Select Mechanic</option>
+                            <option value="John Smith">John Smith</option>
+                            <option value="Mike Johnson">Mike Johnson</option>
+                            <option value="Sarah Wilson">Sarah Wilson</option>
+                            <option value="David Brown">David Brown</option>
+                            <option value="Emily Davis">Emily Davis</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="additionalNotes">Additional Notes</label>
+                        <textarea id="additionalNotes" name="additionalNotes" placeholder="Any specific issues or requests..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" id="submitBtn">
+                        <i class="fas fa-calendar-check"></i> Book Service
+                    </button>
+                </form>
+            </section>
+            
+            <section class="bookings-section">
+                <h2 class="section-title"><i class="fas fa-list-alt"></i> Service Bookings</h2>
+                
+                <div class="filters">
+                    <input type="text" id="searchInput" placeholder="Search by name or vehicle...">
+                    <select id="statusFilter">
+                        <option value="all">All Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                
+                <div class="loading" id="bookingsLoading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Loading bookings...</p>
+                </div>
+                
+                <div class="bookings-container" id="bookingsContainer">
+                    <!-- Bookings will be loaded via PHP -->
+                    <?php include 'fetch_bookings.php'; ?>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 AutoCare Service Center. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
